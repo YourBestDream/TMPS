@@ -1,20 +1,25 @@
 # Main class that will be involved 
 class Book:
     def __init__(self, title: str, author: str, content: str):
-        """
-        Initializes a new instance of the Book class.
-        :param title: Title of the book.
-        :param author: Author of the book.
-        :param content: Content of the book.
+        """Initializes a new instance of the Book class.
+        
+        Params
+            title
+                Title of the book.
+            author
+                Author of the book.
+            content
+                Content of the book.
         """
         self.title = title
         self.author = author
         self.content = content
 
     def get_summary(self) -> str:
-        """
-        Returns a summary of the book details.
-        :return: Summary of the book (title and author).
+        """Returns a summary of the book details.
+        
+        Return
+            Summary of the book (title and author).
         """
         return f"'{self.title}' by {self.author}"
 
@@ -23,10 +28,13 @@ class Book:
 class BookPersistence:
     @staticmethod
     def save_to_file(book: Book, filename: str) -> None:
-        """
-        Saves the content of the book to a text file.
-        :param book: An instance of the Book class.
-        :param filename: The name of the file where the book will be saved.
+        """Saves the content of the book to a text file.
+        
+        Params 
+            book
+                An instance of the Book class.
+            filename
+                The name of the file where the book will be saved.
         """
         with open(filename, 'w') as file:
             file.write(f"Title: {book.title}\n")
@@ -52,6 +60,7 @@ class BookFormatter:
     @staticmethod
     def format_as_json(book: Book) -> dict:
         """Formats the book's content as a JSON-like dictionary.
+        
         Params
             book 
                 An instance of the Book class.
