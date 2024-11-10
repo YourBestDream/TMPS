@@ -1,4 +1,4 @@
-from decorator.vehicle_decorator import VehicleDecorator
+from my_decorator.vehicle_decorator import VehicleDecorator
 
 class SunroofDecorator(VehicleDecorator):
     def specifications(self):

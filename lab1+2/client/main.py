@@ -1,7 +1,7 @@
 from factory.vehicle_factory import CarFactory, TruckFactory
 from singleton.configuration_manager import ConfigurationManager
 from builder.predefined_vehicle_builder import PredefinedVehicleBuilder
-from decorator.feature_decortor import SunroofDecorator, GPSDecorator
+from my_decorator.feature_decorator import SunroofDecorator, GPSDecorator
 from facade.vehicle_creation_facade import VehicleCreationFacade
 
 # Should run from .\lab1 using python -m client.main
