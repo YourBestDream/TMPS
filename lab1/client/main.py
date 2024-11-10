@@ -1,6 +1,8 @@
 from factory.vehicle_factory import CarFactory, TruckFactory
 from singleton.configuration_manager import ConfigurationManager
 from builder.predefined_vehicle_builder import PredefinedVehicleBuilder
+from decorator.feature_decortor import SunroofDecorator, GPSDecorator
+from facade.vehicle_creation_facade import VehicleCreationFacade
 
 # Should run from .\lab1 using python -m client.main
 
@@ -26,6 +28,23 @@ def main():
 
     heavy_truck = PredefinedVehicleBuilder.construct_heavy_truck()
     heavy_truck.specifications()
+    
+    # Build a car with additional features using decorator pattern
+    basic_car = PredefinedVehicleBuilder.construct_sports_car()
+    car_with_sunroof = SunroofDecorator(basic_car)
+    car_with_gps_and_sunroof = GPSDecorator(car_with_sunroof)
+    car_with_gps_and_sunroof.specifications()
+    
+    # Creation of car and configuring it using facade pattern
+    facade = VehicleCreationFacade()
+    facade.create_standard_car()
+
+    # Create a custom sports car
+    sports_car = facade.create_custom_sports_car()
+
+    # Configure max speed
+    facade.configure_vehicle('max_speed', '250km/h')
+    print(f"Max Speed Config: {facade.config_manager.get_setting('max_speed')}")
 
 if __name__ == "__main__":
     main()
