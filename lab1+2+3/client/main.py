@@ -3,6 +3,7 @@ from singleton.configuration_manager import ConfigurationManager
 from builder.predefined_vehicle_builder import PredefinedVehicleBuilder
 from my_decorator.feature_decorator import SunroofDecorator, GPSDecorator
 from facade.vehicle_creation_facade import VehicleCreationFacade
+from builder.vehicle_builder import VehicleBuilder
 
 # Should run from .\lab1 using python -m client.main
 
@@ -45,6 +46,17 @@ def main():
     # Configure max speed
     facade.configure_vehicle('max_speed', '250km/h')
     print(f"Max Speed Config: {facade.config_manager.get_setting('max_speed')}")
+    
+    # Observer
+    builder = VehicleBuilder()
+    builder.create_new_vehicle("car")
+    builder.add_engine("Petrol Engine")
+    builder.add_wheels(4)
+    builder.add_chassis("Standard Chassis")
+    vehicle = builder.get_vehicle()
+    
+    vehicle.drive()
+    vehicle.specifications()
 
 if __name__ == "__main__":
     main()
